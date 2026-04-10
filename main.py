@@ -1,6 +1,7 @@
 from crud_db import connecter_db
 from crud_db import ajouter_voiture
 from voiture import Voiture
+from crud_db import supprimer_voiture
 
 con=connecter_db()
 print(con)
@@ -15,4 +16,4 @@ ajouter_voiture(v1)
 ajouter_voiture(v2)
 ajouter_voiture(v3)
 ajouter_voiture(v4)
-
+supprimer_voiture(3)
