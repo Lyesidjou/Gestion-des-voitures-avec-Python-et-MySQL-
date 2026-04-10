@@ -1,13 +1,29 @@
 import mysql.connector
 import json
 
+
 def  connecter_db():
     with open("config.json", "r", encoding="utf-8") as f:
         config = json.load(f)
-    connexion=mysql.connector.connect(
-        host=config["host"],
-        user=config["user"],
-        password=config["password"],
-        database=config["database"],
+        connexion=mysql.connector.connect(
+            host=config["host"],
+            user=config["user"],
+            password=config["password"],
+            database=config["database"],
+        )
+        return connexion
+
+def ajouter_voiture(voiture):
+    con=connecter_db()
+    crs=con.cursor()
+
+    crs.execute(
+        "INSERT INTO voiture (marque,modele,annee,prix) VALUES (%s,%s,%s,%s)",
+        (voiture.marque,voiture.modele,voiture.annee,voiture.prix)
     )
-    return connexion
+    con.commit()
+    crs.close()
+    con.close()
+
+
+
