@@ -25,5 +25,19 @@ def ajouter_voiture(voiture):
     crs.close()
     con.close()
 
+def supprimer_voiture(id):
+    con=connecter_db()
+    crs=con.cursor()
+
+    crs.execute(
+        "DELETE FROM voiture WHERE id = %s",
+        (id,)
+    )
+    con.commit()
+    crs.close()
+    con.close()
+
+
+
 
 
