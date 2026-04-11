@@ -3,6 +3,7 @@ from crud_db import ajouter_voiture
 from voiture import Voiture
 from crud_db import supprimer_voiture
 from crud_db import recuperer_voiture
+from crud_db import modifier_voiture
 
 con=connecter_db()
 print(con)
@@ -20,3 +21,12 @@ ajouter_voiture(v4)
 supprimer_voiture(3)
 for voiture in recuperer_voiture():
     voiture.afficher_voiture()
+
+liste_voitures=recuperer_voiture()
+voiture=liste_voitures[5]
+voiture.marque="Subaru"
+voiture.modele="BRZ"
+voiture.annee=2020
+voiture.prix=45000
+modifier_voiture(voiture)
+
