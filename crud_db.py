@@ -54,6 +54,18 @@ def recuperer_voiture():
     crs.close()
     con.close()
     return liste_voitures
+def modifier_voiture(voiture):
+    con=connecter_db()
+    crs=con.cursor()
+
+    crs.execute(
+        """UPDATE voiture set marque = %s,modele= %s,annee = %s,prix = %s WHERE id = %s """,
+        (voiture.marque,voiture.modele,voiture.annee,voiture.prix,voiture.id))
+
+    con.commit()
+    crs.close()
+    con.close()
+
 
 
 
